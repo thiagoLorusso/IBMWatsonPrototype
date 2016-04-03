@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+	<head>
+		<title>IBM Watson Services</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<script src="js/angular/angular.min.js"></script>
+		<script src="js/homeController.js"></script>
+		<link rel="stylesheet" href="css/app.css"/>
+	</head>
+	
+	<body ng-controller="homeController">
+	
+		<form name="textTranslationForm1">
+			<div align="center">
+			<h3>Text Translation Service</h3>
+				<h5>*Watson will determine the input text language and translate the text to English, only!!!</h5>
+				<table>
+					<tr>
+						<td>
+							<p>Type a sentence to be translated by Watson</p>
+							<textarea ng-model="inputText" cols="50" rows="10"></textarea>
+						</td>
+						<td>	
+							<p>Text translation</p>
+							<textarea ng-model="translationResult.translations[0].translation" cols="50" rows="10"></textarea>
+						</td>
+					</tr>
+				</table>
+				<button ng-click="textTranslation()">Translate Text</button>
+				<input type="reset" value="Clear fields   ">
+			</div>
+		</form>
+		
+		<br><br>
+		<form name="conceptExpansionForm">
+			<div align="center">
+			<h3>Concept Expansion Service</h3>
+				<h5>*If you want to get more than one concept at a time, use a comma ',' to separate words. E.g.: hello,today!!!</h5>
+				<h5>*Once you get your conceptions you can save them on Cloudant Database. Just click Save.</h5>
+				<h5>*To search by concepts stored on database, type any concept you saved before and you will get the related expansion.</h5>
+				<table>
+					<tr>
+						<td>
+							<p>Type a concept to be expanded by Watson</p>
+							<textarea ng-model="inputConception" cols="50" rows="10"></textarea>
+						</td>
+						<td>
+							<p>Concept expansion</p>
+							<textarea ng-model="conceptionResult" cols="50" rows="10"></textarea>
+							
+						</td>
+					</tr>
+				</table>
+				<button ng-click="conceptExpansion()">Get Conception Expansion</button>
+				<button ng-click="saveConception()">Save Conception on DB</button>
+				<button ng-click="searchConception()">Search Conception on DB</button>
+				<input type="reset" value="Clear fields">
+			</div>
+		</form>
+		
+	</body>
+</html>
